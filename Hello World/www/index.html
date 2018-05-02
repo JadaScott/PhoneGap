@@ -1,0 +1,607 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+    <title>Utah Valley Elite Volleyball</title> 
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/themes/HelloWorld.css" />
+    <link rel="stylesheet" href="css/themes/HelloWorld.min.css" />
+    <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head> 
+<body> 
+
+<section id="page1" data-role="page"  data-transition="slide">
+
+    <div data-role="header" data-position="fixed">
+
+
+        <div data-role="navbar">
+        <ul>
+         <li><a href="#home" class="ui-btn-active">Home</a></li>
+        <li><a href="#signup">Signup</a></li>
+         <li><a href="#uniforms">Uniform Sizing</a></li>
+        <li><a href="#tournaments">Tournaments</a></li>
+        <li><a href="#location">Location</a></li>
+        </ul>
+</div><!-- /navbar -->
+
+    </div><!-- /header -->
+
+    <div class="ui-content">  
+          <h1>Utah Valley Elite Volleyball</h1>
+          <h2>Train Smart</h2>
+        <div data-role="collapsible-set">
+            <div data-role="collapsible" data-collapsed="false">
+                <h1>Elite Training</h1>
+                <p>All the reasons why it's elite.</p>
+            </div>
+            <div data-role="collapsible">
+                <h1>Comprehensive Development</h1>
+                <p>Why it's comprehensive.</p>
+            </div>
+            <div data-role="collapsible">
+                <h1>Mental Toughness</h1>
+                <p>How we develop it and why it's important.</p>
+            </div>
+            <div data-role="collapsible">
+                <h1>Specialized Practices</h1>
+                <p>How drills are structured for results.</p>
+            </div>
+        </div>
+          <input type="button" value="Contact Us" />
+                <button onclick='getBatterystatus()' >Get Battery status</button><br>
+ <span id='status'></span>
+
+ <!-- Script -->
+ <script type="text/javascript" src="cordova.js"></script>
+ <script type="text/javascript">
+ window.addEventListener("deviceready", onDeviceReady, false);
+
+ function onDeviceReady() {
+ 
+  // Trigger when battery charge percentage reaches critical charge threshold
+  window.addEventListener("batterycritical", onBatteryCritical, false);
+
+  // Trigger when battery charge percentage reaches the low charge threshold
+  window.addEventListener("batterylow", onBatteryLow, false);
+ }
+
+ function onBatteryCritical(status) {
+  alert("Battery Level Critical " + status.level + "%\nRecharge Soon!");
+ }
+
+ function onBatteryLow(status) {
+  alert("Battery Level Low " + status.level + "%");
+ }
+
+ // Get Battery charge percentage
+ function getBatterystatus(){
+  window.addEventListener("batterystatus", onBatteryStatus, false);
+ }
+ function onBatteryStatus(status) {
+  alert("Level: " + status.level + " isPlugged: " + status.isPlugged);
+  document.getElementById("status").textContent = "Level: " + status.level + " isPlugged: " + status.isPlugged;
+ }
+
+ </script>
+
+       
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed" data-fullscreen="true">
+          <div data-role="navbar">
+        <ul>
+        <li><a href="#home"  class="ui-btn-active">Home</a></li>
+        </ul>
+</div><!-- /navbar -->
+    </div><!-- /footer -->
+</div><!-- /page -->
+</section>
+
+
+<section id="signup" data-role="page" data-theme=“c” data-transition="slide">
+
+    <div data-role="header" data-position="fixed">
+        <div data-role="navbar">
+        <ul>
+         <li><a href="#home">Home</a></li>
+        <li><a href="#signup" class="ui-btn-active">Signup</a></li>
+         <li><a href="#uniforms">Uniform Sizing</a></li>
+        <li><a href="#tournaments">Tournaments</a></li>
+        <li><a href="#location">Location</a></li>
+        </ul>
+</div><!-- /navbar -->
+    </div><!-- /header -->
+
+    <div class="ui-content">   
+        <p>Join UV Elite</p>    
+        <form method="get" action="">
+          <fieldset class="ui-field-contain">
+            <label for="address">Your Address:</label>
+            <input type="text" name="address" id="address" value="" placeholder="Your Address"/>
+            <label for="age">Your Age:</label>
+            <input type="number" name="age" id="age" value="" placeholder="Your Age"/>
+            <label for="email">Your email: </label>
+            <input type="email" name="email" id="email" value="" placeholder="Your Email"/>
+            <label for="birthdate">Your birthdate: </label>
+            <input type="date" name="birthdate" id="birthdate" value="" placeholder="Your Birthdate"/>
+          </fieldset>
+          <div class="ui-field-contain">
+            <label for="search">Search the site:</label>
+            <input type="search" name="search" id="search" value="" placeholder="Search the site"/>
+          </div>
+             <form method="get" action="">
+          <fieldset class="ui-field-contain">
+            <legend>How much do you like volleyball?</legend>
+            <label for="num">Enter a Number</label>
+            <input type="range" name="num" id="num" value="25" min="0" max="100" />
+          </fieldset>
+        </form>
+        <form method="get" action="">
+            <fieldset class="ui-field-contain">
+              <label for="ts1">Have you played volleyball before:</label>
+              <select name="ts1" id="ts1" data-role="flipswitch">
+                <option value="No" selected="selected">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </fieldset>
+        </form>
+
+
+<form method="get" action="">
+              <fieldset class="ui-field-contain">
+                <label for="select1">How tall are you:</label>
+                <select name="select1" id="select1">
+                  <option value="value1">Really tall</option>
+                  <option value="value2" disabled="disabled">Short</option>
+                  <option value="value3">Tall</option>
+                  <option value="value4">Tallish</option>
+                </select>
+              </fieldset>
+          </form>
+        <form method="get" action="">
+          <fieldset class="ui-field-contain">
+          <label for="select1">Select Training Times:</label>
+          <select name="select1" id="select1" data-native-menu="false">
+            <option>Choose One:</option>
+            <optgroup label="Morning Training Session">
+              <option value="value1">Tues AM</option>
+              <option value="value2">Wed AM</option>
+              <option value="value3">Thurs AM</option>
+              <option value="value4">Fri AM</option>
+            </optgroup>
+            <optgroup label="Evening Training Session">
+              <option value="value5">Tues PM</option>
+              <option value="value6">Wed PM</option>
+              <option value="value7">Thurs PM</option>
+              <option value="value8" disabled="disabled">Fri PM</option>
+            </optgroup>
+          </select>
+        </fieldset>
+        <fieldset class="ui-field-contain">
+        <label for="select1">Custom Training:</label>
+          <select name="select1" id="select2" multiple="multiple" data-native-menu="false">
+            <option>Select Options:</option>
+            <option value="value1">Skills Development</option>
+            <option value="value2">Sport-specific Conditioning</option>
+            <option value="value3">Position Practice</option>
+            <option value="value4">High Performance</option>
+            <option value="value5">Mental Training</option>
+            <option value="value6">Competitions</option>
+          </select>
+        </fieldset>
+        </form>
+        <form method="get" action="">
+          <div class="ui-field-contain">
+            <fieldset data-role="controlgroup" data-type="vertical">
+            <legend>Birthday:</legend>
+    
+            <label for="month">Select Month</label>
+            <select name="month" id="month">
+              <option value="Jan">January</option>
+              <option value="Feb">February</option>
+              <option value="Mar">March</option>
+              <option value="Apr">April</option>
+              <option value="May">May</option>
+              <option value="Jun">June</option>
+              <option value="Jul">July</option>
+              <option value="Aug">August</option>
+              <option value="Sep">September</option>
+              <option value="Oct">October</option>
+              <option value="Nov">November</option>
+              <option value="Dec">December</option>
+            </select>
+    
+            <label for="year">Select Year</label>
+            <select name="year" id="year">
+              <option value="2017">2017</option>
+              <option value="2016">2016</option>
+              <option value="2015">2015</option>
+              <option value="2014">2014</option>
+              <option value="2013">2013</option>
+              <option value="2012">2012</option>
+              <option value="2011">2011</option>
+            </select>
+          </fieldset>
+          </div>
+        </form>    
+
+          <div class="ui-field-contain">
+            <label for="details">Tell us about you!</label>
+            <textarea id="details"></textarea>
+          </div>
+        </form>  
+          <p>Choose Experience Level</p>
+            <div data-role="controlgroup" data-type="horizontal">
+                <button class="ui-btn">Novice</button>
+                <button class="ui-btn">Intermediate</button>
+                <button class="ui-btn">Advanced</button>
+            </div>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed" data-fullscreen="true">
+         <div data-role="navbar">
+        <ul>
+        <li><a href="#home">Home</a></li>
+        </ul>
+</div><!-- /navbar -->
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+</section>
+
+
+
+<section id="uniforms" data-role="page"  data-transition="slide">
+
+    <div data-role="header" data-position="fixed">
+        <div data-role="navbar">
+        <ul>
+         <li><a href="#home">Home</a></li>
+        <li><a href="#signup">Signup</a></li>
+         <li><a href="#uniforms"  class="ui-btn-active">Uniform Sizing</a></li>
+        <li><a href="#tournaments">Tournaments</a></li>
+        <li><a href="#location">Location</a></li>
+        </ul>
+</div><!-- /navbar -->
+    </div><!-- /header -->
+
+    <div class="ui-content">   
+        <p>Select your size.</p>
+   <form method="get" action="">
+            <fieldset data-role="controlgroup">
+              <legend>Shorts:</legend>
+              <label for="rb1">Bermuda</label>
+              <input type="radio" name="rb" id="rb1" value="rb1"/>
+              <label for="rb2">Biker</label>
+              <input type="radio" name="rb" id="rb2" value="rb2" checked="checked"/>
+              <label for="rb3">Capri</label>
+              <input type="radio" name="rb" id="rb3" value="rb3"/>
+              <label for="rb4">Daisy</label>
+              <input type="radio" name="rb" id="rb4" value="rb4"/>
+            </fieldset>
+            <fieldset data-role="controlgroup" data-type="horizontal">
+              <legend>Shirts:</legend>
+              <label for="rb5">Tank</label>
+              <input type="radio" name="rbtn" id="rb5" value="rb5" checked="checked"/>
+              <label for="rb6">T-shirt</label>
+              <input type="radio" name="rbtn" id="rb6" value="rb6"/>
+              <label for="rb7">Long sleeve</label>
+              <input type="radio" name="rbtn" id="rb7" value="rb7"/>
+            </fieldset>
+            <fieldset data-role="controlgroup">
+              <legend>Agree to the terms:</legend>
+              <label for="cb1">I agree</label>
+              <input type="checkbox" name="cb1" id="cb1" />
+            </fieldset>
+            <fieldset data-role="controlgroup">
+              <legend>Choose Sock Color:</legend>
+              <label for="pf1">Red</label>
+              <input type="checkbox" name="pf1" id="pf1" />
+              <label for="pf2">Green</label>
+              <input type="checkbox" name="pf2" id="pf2" />
+              <label for="pf3">Blue</label>
+              <input type="checkbox" name="pf3" id="pf3" />
+            </fieldset>
+        </form>    
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed" data-fullscreen="true">
+         <div data-role="navbar">
+        <ul>
+        <li><a href="#page1">Home</a></li>
+        </ul>
+</div><!-- /navbar -->
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+</section>
+
+
+<section id="tournaments" data-role="page" data-transition="slide">
+
+    <div data-role="header" data-position="fixed">
+        <div data-role="navbar">
+      <ul>
+         <li><a href="#home">Home</a></li>
+        <li><a href="#signup">Signup</a></li>
+         <li><a href="#uniforms">Uniform Sizing</a></li>
+        <li><a href="#tournaments" class="ui-btn-active">Tournaments</a></li>
+        <li><a href="#location">Location</a></li>
+        </ul>
+</div><!-- /navbar -->
+    </div><!-- /header -->
+
+    <div class="ui-content">   
+     <ul data-role="listview" data-inset="true">
+      <h1>2018 Tournaments</h1>
+            <li data-role="list-divider">Traveling Qualifiers</li>
+            <li><a href="#">
+                <h4>Colorado Classic</h4>
+                <p style="font-weight:bold">Regional Qualifier</p>
+                <p class="ui-li-aside">7am</p>
+                <p>Please be sure to sign up for snacks.</p>
+            </a></li>
+            <li><a href="#">
+                <h4>AAU Regionals</h4>
+                <p style="font-weight:bold">Midwest Region</p>
+                <p class="ui-li-aside">7am</p>
+                <p>Check directions for additional details.</p>
+            </a></li>
+            <li data-role="list-divider">In State Qualifiers</li>
+            <li><a href="#">
+                <h4>Utah Classic</h4>
+                <p style="font-weight:bold">Regional Qualifier</p>
+                <p class="ui-li-aside">8am</p>
+                <p>Please bring lunches for team.</p>
+            </a></li>
+            <li><a href="#">
+                <h4>Intermountain Qualifier</h4>
+                <p style="font-weight:bold">Super Regional</p>
+                <p>Please bring your "A" game.</p>
+            </a></li>
+          </ul>
+
+           <ul data-role="listview" data-divider-theme="b">
+            <li data-role="list-divider">League Night</li>
+              <li>Tuesday</li>
+                <li>
+                    <a href="#winedetails"></a>
+                    <a href="#winenotes">Spanish Fork League</a>
+                </li>
+                <li>
+                    <a href="#winedetails">Orem League</a>
+                    <a href="#winenotes"></a>
+                </li>
+                <li>
+                    <a href="#winedetails">Pleasant Grove League</a>
+                    <a href="#winenotes"></a>
+                </li>
+              <li>Washington</li>
+              <li>Oregon</li>
+            <li data-role="list-divider">France</li>
+              <li>Burgundy</li>
+              <li>Bordeaux</li>
+              <li>Languedoc</li>
+            <li data-role="list-divider">Italy</li>
+              <li>Tuscany</li>
+              <li>Sicily</li>
+              <li>Lombardia</li>
+          </ul>
+           <h2>Ordered List Example</h2>
+          <ol data-role="listview">
+                <li><a href="#page9">Count Bubbles</a></li>
+                <li><a href="#page10">Icons</a></li>
+                <li><a href="#page11">Advanced List Views</a></li>
+                <li><a href="#page12">Rich Content Lists</a></li>
+            </ol>
+            <h2>Unordered List Example</h2>
+            <ul data-role="listview">
+                <li><a href="#page9">Count Bubbles</a></li>
+                <li><a href="#page10">Icons</a></li>
+                <li><a href="#page11">Advanced List Views</a></li>
+                <li><a href="#page12">Rich Content Lists</a></li>
+            </ul>
+
+            <h2>Ordered List Example</h2>
+            <ol data-role="listview">
+                <li><a href="#">List Item 1 <span class="ui-li-count">20</span></a></li>
+                <li><a href="#">List Item 2 <span class="ui-li-count">7</span></a></li>
+                <li><a href="#">List Item 3 <span class="ui-li-count">45</span></a></li>
+                <li><a href="#">List Item 4 <span class="ui-li-count">2</span></a></li>
+                <li><a href="#">List Item 5 </a></li>
+                <li><a href="#">List Item 6 <span class="ui-li-count">10</span></a></li>
+            </ol>
+            <h2>Unordered List Example</h2>
+            <ul data-role="listview">
+                <li><a href="#">List Item 1 <span class="ui-li-count">20</span></a></li>
+                <li><a href="#">List Item 2 <span class="ui-li-count">7</span></a></li>
+                <li><a href="#">List Item 3 <span class="ui-li-count">45</span></a></li>
+                <li><a href="#">List Item 4 <span class="ui-li-count">2</span></a></li>
+                <li><a href="#">List Item 5 </a></li>
+                <li><a href="#">List Item 6 <span class="ui-li-count">10</span></a></li>
+            </ul>
+       
+<h2>Ordered List Example</h2>
+      <ol data-role="listview">
+        <li><a href="#"><img src='img/us.png' class='ui-li-icon'/>United States</a></li>
+        <li><a href="#"><img src='img/gb.png' class='ui-li-icon'/>Great Britain</a></li>
+        <li><a href="#"><img src='img/de.png' class='ui-li-icon'/>Germany</a></li>
+        <li><a href="#"><img src='img/gf.png' class='ui-li-icon'/>France</a></li>
+      </ol>
+      <h2>Unordered List Example</h2>
+      <ul data-role="listview">
+        <li><a href="#"><img src='img/us.png' class='ui-li-icon'/>United States</a></li>
+        <li><a href="#"><img src='img/gb.png' class='ui-li-icon'/>Great Britain</a></li>
+        <li><a href="#"><img src='img/de.png' class='ui-li-icon'/>Germany</a></li>
+        <li><a href="#"><img src='img/gf.png' class='ui-li-icon'/>France</a></li>
+      </ul>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed" data-fullscreen="true">
+         <div data-role="navbar">
+        <ul>
+        <li><a href="#home">Home</a></li>
+        </ul>
+</div><!-- /navbar -->
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+</section>
+
+
+<section id="location" data-role="page" data-transition="slide">
+
+    <div data-role="header" data-position="fixed">
+        <div data-role="navbar">
+        <ul>
+         <li><a href="#home">Home</a></li>
+        <li><a href="#signup">Signup</a></li>
+         <li><a href="#uniforms">Uniform Sizing</a></li>
+        <li><a href="#tournaments">Tournaments</a></li>
+        <li><a href="#location" class="ui-btn-active">Location</a></li>
+        </ul>
+</div><!-- /navbar -->
+    </div><!-- /header -->
+
+    <div class="ui-content">    
+
+      <h2 class="center">Utah Valley Elite Volleyball</h2>
+      <script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript">
+function onSuccess(position) {
+var element = document.getElementById('geolocation');
+element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
+'Longitude: ' + position.coords.longitude + '<br />' +
+'<hr />' + element.innerHTML;
+}
+function onError(error) {
+alert('code: ' + error.code + 'n' +
+'message: ' + error.message + 'n');
+}
+</script>
+</head>
+<body>
+<div id="geolocation"></div>
+      <p class="center">5445 South 900 East, Salt Lake City, UT 84117
+        <br>(801) 261-3426</p>
+      <div id="map2"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.98699161104!2d-111.86657214897178!3d40.65221714910622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752621c00000001%3A0xa3162372249aeef2!2sThe+Sports+Mall!5e0!3m2!1sen!2sus!4v1519178210083" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+    </div>
+        <form method="get" action="">
+          <fieldset class="ui-field-contain">
+            <legend>How much do you like this location?</legend>
+            <label for="num">Enter a Number</label>
+            <input type="range" name="num" id="num" value="25" min="0" max="100" />
+          </fieldset>
+        </form>
+        <form method="get" action="">
+            <fieldset class="ui-field-contain">
+              <label for="ts1">Do you like ice cream:</label>
+              <select name="ts1" id="ts1" data-role="flipswitch">
+                <option value="No" selected="selected">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </fieldset>
+            <fieldset class="ui-field-contain">
+              <label for="ts2">Do you like oranges?:</label>
+              <input name="ts2" type="checkbox" checked="checked" data-role="flipswitch" />
+            </fieldset>
+        </form>
+
+
+<form method="get" action="">
+              <fieldset class="ui-field-contain">
+                <label for="select1">Basic Select Menu:</label>
+                <select name="select1" id="select1">
+                  <option value="value1">Value 1</option>
+                  <option value="value2" disabled="disabled">Value 2</option>
+                  <option value="value3">Value 3</option>
+                  <option value="value4">Value 4</option>
+                </select>
+              </fieldset>
+          </form>
+        <form method="get" action="">
+          <fieldset class="ui-field-contain">
+          <label for="select1">Custom Select Menu:</label>
+          <select name="select1" id="select1" data-native-menu="false">
+            <option>Choose One:</option>
+            <optgroup label="First Group">
+              <option value="value1">Value 1</option>
+              <option value="value2" disabled="disabled">Value 2</option>
+              <option value="value3">Value 3</option>
+              <option value="value4">Value 4</option>
+            </optgroup>
+            <optgroup label="Second Group">
+              <option value="value5">Value 5</option>
+              <option value="value6">Value 6</option>
+              <option value="value7">Value 7</option>
+              <option value="value8">Value 8</option>
+            </optgroup>
+          </select>
+        </fieldset>
+        <fieldset class="ui-field-contain">
+        <label for="select1">Multiple Enabled:</label>
+          <select name="select1" id="select2" multiple="multiple" data-native-menu="false">
+            <option>Select Options:</option>
+            <option value="value1">Value 1</option>
+            <option value="value2">Value 2</option>
+            <option value="value3">Value 3</option>
+            <option value="value4">Value 4</option>
+            <option value="value5">Value 5</option>
+            <option value="value6">Value 6</option>
+          </select>
+        </fieldset>
+        </form>
+        <form method="get" action="">
+          <div class="ui-field-contain">
+            <fieldset data-role="controlgroup" data-type="vertical">
+            <legend>Expiration Date:</legend>
+    
+            <label for="month">Select Month</label>
+            <select name="month" id="month">
+              <option value="Jan">January</option>
+              <option value="Feb">February</option>
+              <option value="Mar">March</option>
+              <option value="Apr">April</option>
+              <option value="May">May</option>
+              <option value="Jun">June</option>
+              <option value="Jul">July</option>
+              <option value="Aug">August</option>
+              <option value="Sep">September</option>
+              <option value="Oct">October</option>
+              <option value="Nov">November</option>
+              <option value="Dec">December</option>
+            </select>
+    
+            <label for="year">Select Year</label>
+            <select name="year" id="year">
+              <option value="2017">2017</option>
+              <option value="2016">2016</option>
+              <option value="2015">2015</option>
+              <option value="2014">2014</option>
+              <option value="2013">2013</option>
+              <option value="2012">2012</option>
+              <option value="2011">2011</option>
+            </select>
+          </fieldset>
+          </div>
+        </form>    
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed" data-fullscreen="true">
+         <div data-role="navbar">
+        <ul>
+        <li><a href="#home">Home</a></li>
+       
+        </ul>
+</div><!-- /navbar -->
+    </div><!-- /footer -->
+</div><!-- /page -->
+
+</section>
+
+</body>
+</html>
